@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { IProduct } from "../../model/IProduct";
 import ProductList from "./ProductList";
 import { CircularProgress } from "@mui/material";
+import request from "../../api/request";
 
 export default function CatlogPage(){
     
@@ -10,8 +11,7 @@ export default function CatlogPage(){
 
 
     useEffect(() => {
-      fetch("http://localhost:5224/api/products")
-      .then(response => response.json())
+      request.Catalog.list()
       .then(data => setProduct(data))
       .finally(() => setLoading(false));
 
